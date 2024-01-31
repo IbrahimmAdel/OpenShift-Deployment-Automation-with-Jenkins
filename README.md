@@ -33,7 +33,7 @@ Before you begin, ensure you have the following tools installed:
 
 ## Manual Testing, Building, and Running Procedures
 
-> This document provides a comprehensive guide outlining the manual steps required before automating the process.
+> This document provides a comprehensive guide outlining the manual steps before automating the process.
 
 #### 1. Execute Unit Tests
 
