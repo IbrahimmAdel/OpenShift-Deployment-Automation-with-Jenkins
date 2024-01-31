@@ -155,7 +155,7 @@ docker run --name=<container_name> -d -p 8081:8081 <image_name>
 
 ### Usage
 
-1. Update values in `terraform.tfvars` file
+1. Update values in [terraform.tfvars](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/terraform.tfvars) file
 - **region:**  AWS region where infrastructure will be created, default is 'us-east-1'.
 - **vpc_cidr:**  IP range for VPC, default is '10.0.0.0/16'.
 - **subnet_cidr:**  IP sub-range for subnet, default is '10.0.0.0/24'.
