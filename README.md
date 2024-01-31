@@ -524,8 +524,8 @@ helm repo update
 #### 3. Install the helm chart of Elasticsearch
 ```
 helm install elasticsearch ot-helm/elasticsearch --namespace ot-operators \
-  --set esMaster.storage.storageClass=do-block-storage \
-  --set esData.storage.storageClass=do-block-storage
+--set esMaster.storage.storageClass=do-block-storage \
+--set esData.storage.storageClass=do-block-storage
 ```
 
 #### 4. Verify the status of the pods
