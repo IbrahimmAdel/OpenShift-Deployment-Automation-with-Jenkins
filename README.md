@@ -385,9 +385,9 @@ Configure Jenkins credentials for various services:
 - GitHub
 - DockerHub
 - SonarQube Token
-- OpenShift Token, Can be 'Kubeconfig file' or 'service account token' and server url
+- OpenShift Token, Can be either 'Kubeconfig' file or 'service account' token and 'server URL'
 
-Note: to get server url you can run :
+Note: to get server URL, run:
 ```
 oc cluster-info
 ```
