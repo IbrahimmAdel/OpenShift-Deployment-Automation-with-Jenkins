@@ -211,7 +211,7 @@ terraform destroy
    - **Purpose:** Install Git on the EC2 instance.
 
 [Jenkins Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/Jenkins)
-   - **Purpose:** Install Jenkins on the EC2 instance, Configure the initial password and admin username and password for login, Install necessary plugins on jenkins.
+   - **Purpose:** Install Jenkins on the EC2 instance, Configure the initial password and admin username and password for login, Install necessary plugins on jenkins will be used in project such as 'OpenShift Client Plugin', 'SonarQube Scanner', and more.
    - Note: you need to configure jenkins admin credentials in [vars.yml](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Ansible/roles/Jenkins/vars/main.yaml) file.
 ```
 jenkins_user: ''
