@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ivolve-website-route
+spec:
+  to:
+    kind: Service
+    name: ivolve-website-service
+  port:
+    targetPort: 8081

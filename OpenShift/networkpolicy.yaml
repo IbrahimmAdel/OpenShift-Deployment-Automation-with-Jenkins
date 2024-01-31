@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ivolve-website-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: ivolve-website
+  policyTypes:
+  - Ingress
+  - Egress  
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: ivolve-website
+  ports:
+  - protocol: TCP
+    port: 8081
+    
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: ivolve-website
+  ports:
+  - protocol: TCP
+    port: 8081
+

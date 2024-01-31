@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivolve-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivolve-website
+  template:
+    metadata:
+      labels:
+        app: ivolve-website
+    spec:
+      containers:
+      - name: ivolve-website
+        image: ibrahimadel10/ivolve_website:v1
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+        - name: storage
+          mountPath: /app/data 
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: ivolve-website-pvc
