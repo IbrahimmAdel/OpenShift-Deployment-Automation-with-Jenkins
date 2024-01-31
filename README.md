@@ -321,11 +321,11 @@ cd OpenShift
 
 - **[runUnitTests.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/runUnitTests.groovy):** run unit test command.
 
-- **[runSonarQubeAnalysis.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/runSonarQubeAnalysis.groovy):** run sonarqube command , Function argument: SonarQube server name, SonarQube authentication token credentials ID, SonarQube project key, SonarQube host server.
+- **[runSonarQubeAnalysis.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/runSonarQubeAnalysis.groovy):** run sonarqube command.
 
 - **[buildandPushDockerImage.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/buildandPushDockerImage.groovy):** Build docker image and push it to DockerHub, Function argument: DockerHub credentials ID, Image name.
 
-- **[deployOnOpenShift.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/deployOnOpenShift.groovy):** login to OpenShift cluster and deploy files, Function argument: Image name, Deployment file name, OpenShift credentials ID, OpenShift server URL, OpenShif project.
+- **[deployOnOpenShift.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/deployOnOpenShift.groovy):** login to OpenShift cluster and deploy files, Function argument: OpenShift Credentials ID 'could be KubeConfig file or Service account token', OpenShift Cluster url, OpenShift Project name, Image name.
   
 
 ### 2. OpenShift Service Account
