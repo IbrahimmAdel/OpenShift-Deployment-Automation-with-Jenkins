@@ -212,7 +212,13 @@ terraform destroy
 
 [Jenkins Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/Jenkins)
    - **Purpose:** Install Jenkins on the EC2 instance, Configure the initial password and admin username and password for login, Install necessary plugins on jenkins.
-   - Note: you need to configure jenkins admin credentials in [vars.yml](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Ansible/roles/Jenkins/vars/main.yaml) file. 
+   - Note: you need to configure jenkins admin credentials in [vars.yml](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Ansible/roles/Jenkins/vars/main.yaml) file.
+```
+jenkins_user: ''
+jenkins_password: ''
+jenkins_fullname: ''
+jenkins_email: ''
+```
 
 [Docker Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/Docker)
    - **Purpose:** Install and configure Docker on the EC2 instance, Configure jenkins user to run docker commands.
@@ -378,8 +384,15 @@ Configure Jenkins credentials for various services:
 
 - GitHub
 - DockerHub
-- OpenShift Token, Can be Kubeconfig file or service account token
 - SonarQube Token
+- OpenShift Token, Can be 'Kubeconfig file' or 'service account token' and server url
+
+Note: to get server url you can run :
+```
+oc cluster-info
+```
+![openshift_serverurl](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/get-openshift-apiserver.png)
+
 
 #### Steps:
 1. In Jenkins, navigate to Manage Jenkins, then Manage Credentials.
