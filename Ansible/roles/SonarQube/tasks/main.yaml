@@ -1,0 +1,64 @@
+---
+#_____________________ SonarQube installation _____________________#
+- name: Add sonarqube user
+  user:
+    name: sonarqube
+    state: present
+    createhome: yes
+    home: /opt/sonarqube
+    shell: /bin/bash
+
+- name: Add settings block to sysctl.conf
+  blockinfile:
+    path: /etc/sysctl.conf
+    block: |
+      vm.max_map_count=524288
+      fs.file-max=131072
+          
+- name: Apply sysctl settings
+  command: sysctl --system
+
+- name: Download SonarQube zip file
+  get_url:
+    url: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.1.69595.zip
+    dest: /home/ubuntu/sonarqube-9.9.1.69595.zip
+
+- name: Unzip SonarQube
+  unarchive:
+    src: /home/ubuntu/sonarqube-9.9.1.69595.zip
+    dest: /opt/
+    owner: sonarqube
+    group: sonarqube
+    remote_src: yes
+
+- name: Add settings block to sysctl.conf
+  blockinfile:
+    path: /opt/sonarqube-9.9.1.69595/conf/sonar.properties
+    block: |
+      sonar.web.javaAdditionalOpts=-server
+      sonar.web.host=0.0.0.0
+      sonar.web.port=9000
+      sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m -XX:+HeapDumpOnOutOfMemoryError
+      sonar.log.level=INFO
+      sonar.path.logs=logs
+      sonar.jdbc.username=sonarqube
+      sonar.jdbc.password=pass
+      sonar.jdbc.url=jdbc:postgresql://localhost:5432/sonarqube
+          
+- name: Copy SonarQube service file
+  copy:
+    src: sonarqube.service
+    dest: /etc/systemd/system/sonarqube.service
+    mode: 0644
+
+- name: Reload Systemd daemon
+  systemd:
+    daemon_reload: yes
+
+#__________________ Start SonarQube service _________________#
+- name: Start SonarQube service
+  systemd:
+    name: sonarqube
+    state: started
+    enabled: yes
+

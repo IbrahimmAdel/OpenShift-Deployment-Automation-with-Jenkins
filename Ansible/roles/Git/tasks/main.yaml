@@ -1,0 +1,7 @@
+---
+#__________________ Git installation __________________#
+- name: Install Git
+  apt:
+    name: git
+    state: present
+  become: yes

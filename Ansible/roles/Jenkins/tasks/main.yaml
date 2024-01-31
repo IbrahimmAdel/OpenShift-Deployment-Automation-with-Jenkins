@@ -1,0 +1,107 @@
+---
+#________________________ Update apt package ________________________#
+- name: Update apt cache 
+  apt:
+    update_cache: yes
+  become: yes
+
+#________________________ Jenkins installation ________________________#
+- name: Ensure the jenkins apt repository key is installed
+  apt_key: url=https://pkg.jenkins.io/debian/jenkins.io-2023.key state=present
+
+- name: Ensure the repository is configured
+  apt_repository:
+    repo: 'deb https://pkg.jenkins.io/debian-stable binary/' 
+    state: present
+
+- name: Ensure jenkins is installed
+  apt: 
+    name: jenkins 
+    update_cache: yes
+  become: true
+
+#_________________ Configure Jenkins Initial password _________________#
+- name: Add Jenkins password
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  register: jenkins_initial_password
+
+- name: Create CRUMB authentication request
+  uri:
+    url: 'http://{{ ansible_host }}:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
+    user: admin
+    password: '{{ jenkins_initial_password.stdout }}'
+    force_basic_auth: yes
+    return_content: yes
+  register: crumb
+
+#_____________________ Configure Jenkins admin User ____________________#
+- name: Add Jenkins administration account
+  uri:
+    method: POST
+    url: "http://{{ ansible_host }}:8080/securityRealm/createAccountByAdmin"
+    user: admin
+    password: '{{ jenkins_initial_password.stdout }}'
+    force_basic_auth: yes
+    follow_redirects: all
+    headers:
+      Jenkins-Crumb: '{{ crumb.content.split(":")[1] }}'
+      Cookie: '{{ crumb.set_cookie }}'
+    body: 'username={{ jenkins_user }}&password1={{ jenkins_password }}&password2={{ jenkins_password }}&fullname={{ jenkins_fullname }}&email={{ jenkins_email }}'       
+    
+#_______________________ Install Jenkins Plugins ________________________#
+- name: Install necessary jenkins plugins
+  community.general.jenkins_plugin:
+    name: "{{ item }}"
+    url_username: "{{ jenkins_user }}"
+    url_password: "{{ jenkins_password }}"
+    url: http://{{ ansible_host }}:8080
+    state: latest
+  with_items:
+    - workflow-aggregator
+    - Credentials
+    - credentials-binding
+    - pipeline
+    - github-branch-source
+    - pipeline-build-step
+    - pipeline-stage-step
+    - pipeline-stage-view
+    - stage-view
+    - pipeline-utility-steps
+    - Basic Steps
+    - Groovy
+    - Stage Step
+    - CM Step
+    - workflow-cps-global-lib
+    - workflow-cps-global-lib
+    - shared-groovy-libraries
+    - pipeline-github-lib
+    - SCM API 
+    - Git client
+    - Git
+    - GitHub API
+    - GitHub
+    - github-branch-source
+    - Docker
+    - github-branch-source
+    - sonar
+    - openshift-client
+    - openshift-login
+
+#______________________________ start Jenkins ______________________________#
+- name: Skip initial setup
+  lineinfile:
+    path: /lib/systemd/system/jenkins.service
+    regexp: '^Environment="JAVA_OPTS=*'
+    line: |
+      Environment="JAVA_OPTS=-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"
+      Environment="JAVA_ARGS=-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"
+      
+- name: DAEMON_Realod
+  systemd:
+    daemon_reload: true
+
+- name: Restart Jenkins service
+  service:
+    name: jenkins
+    state: restarted
+    enabled: yes

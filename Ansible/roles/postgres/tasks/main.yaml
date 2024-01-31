@@ -1,0 +1,29 @@
+---
+#_____________________ Postgres installation _____________________#
+- name: Install postgres
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+    update_cache: yes
+    state: present
+
+#_________________________ Start Postgres _________________________#
+- name: Start postgres
+  systemd:
+    name: postgresql
+    enabled: yes
+    state: started
+
+#______________________ Create sonarube user _______________________#
+- name: Create SonarQube User
+  command: sudo -u postgres psql -c "CREATE USER sonarqube WITH PASSWORD 'pass';"
+  ignore_errors: yes
+
+- name: Create SonarQube Database
+  command: sudo -u postgres psql -c "CREATE DATABASE sonarqube OWNER sonarqube;"
+  ignore_errors: yes
+
+- name: Grant Privileges to SonarQube User
+  command: sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE sonarqube TO sonarqube;"
+  ignore_errors: yes

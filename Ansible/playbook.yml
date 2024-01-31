@@ -1,0 +1,23 @@
+---
+- name: Configure Jenkins Server
+  hosts: ec2
+  become: yes
+  gather_facts: true
+  roles:
+    - prerequisite
+    - postgres
+    - SonarQube
+    - Git
+    - Jenkins
+    - Docker
+
+    
+  tasks:
+    - name: Display Jenkins IP
+      debug:
+        msg: "Jenkins server: http://{{ ansible_host }}:8080"
+        
+    - name: Display sonarqube IP
+      debug:
+        msg: "SonarQube server: http://{{ ansible_host }}:9000 , First time Login Credentials: (user: 'admin', password: 'admin')"
+

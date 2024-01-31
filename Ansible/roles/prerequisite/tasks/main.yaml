@@ -1,0 +1,29 @@
+---
+#__________________ Install prerequisites packages __________________#
+- name: Update and upgrade apt
+  apt:
+    update_cache: yes
+    upgrade: safe
+
+- name: Install prerequisites
+  apt:
+    name:
+      - wget
+      - apt-transport-https
+      - gnupg2
+      - software-properties-common
+      - unzip
+      - curl
+      - tar
+      - openjdk-17-jdk
+      - openjdk-17-jre
+    state: present
+    update_cache: yes
+    
+- name: Install OpenShift CLI (oc)
+  become: yes
+  become_user: root
+  shell: |
+    curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
+    tar xzf oc.tar.gz -C /usr/local/bin/
+    chmod +x /usr/local/bin/oc
