@@ -544,7 +544,7 @@ oc get elasticsearch -n ot-operators
 ```
 
 ## Resources
- - https://ot-logging-operator.netlify.app/docs/
+ - https://ot-logging-operator.netlify.app/docs/overview/
  - https://ot-logging-operator.netlify.app/docs/getting-started/installation/
  - https://ot-logging-operator.netlify.app/docs/getting-started/elasticsearch-setup/
  - https://ot-logging-operator.netlify.app/docs/configuration/elasticsearch-config/
