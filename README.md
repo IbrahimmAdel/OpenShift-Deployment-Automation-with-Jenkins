@@ -298,7 +298,7 @@ cd OpenShift
  oc apply -f .
  ```
 3. Verify the deployment status.
-   ![Final-Deployment](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/Final-Deployment.png)
+   ![Final-Deployment](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/Jenkins-final-deploy-openshift.png)
 
 ---
 
@@ -398,7 +398,7 @@ Push the shared library file to a separate GitHub repository and configure it to
 3. In Jenkins, go to Manage Jenkins, Then Configure System.
 4. In the Global Pipeline Libraries section, add your GitHub repository details.
 
-![jenkins-sharedLibrary-available](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/jenkins-sharedLibrary-available.png)
+![jenkins-sharedLibrary-available](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-sharedLibrary-available.png)
 
 ### 3. Manage SonarQube from Manage Jenkins
 
