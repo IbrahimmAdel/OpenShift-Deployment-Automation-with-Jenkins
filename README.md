@@ -11,7 +11,7 @@
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
-2. [Manual Testing, Building, and Running Procedures](Manual-Testing-Building-and-Running-Procedures)
+2. [Manual Testing, Building, and Running Procedures](manual-testing,-building,-and-running-procedures)
 3. [Infrastructure Provisioning with Terraform](#infrastructure-provisioning-with-terraform)
 4. [Ansible Playbook for Configuration](#ansible-playbook-for-configuration)
 5. [infra.sh](#infrash)
