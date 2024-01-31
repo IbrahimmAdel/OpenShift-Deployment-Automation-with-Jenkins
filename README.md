@@ -544,7 +544,7 @@ oc get secrets -n ot-operators elasticsearch-password -o jsonpath="{.data.passwo
 oc get elasticsearch -n ot-operators
 ```
 
-## Resources
+## References
  - https://ot-logging-operator.netlify.app/docs/overview/
  - https://ot-logging-operator.netlify.app/docs/getting-started/installation/
  - https://ot-logging-operator.netlify.app/docs/getting-started/elasticsearch-setup/
