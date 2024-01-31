@@ -225,11 +225,10 @@ terraform destroy
     ansible-playbook -i inventory.ini playbook.yml
     ```
 4. Ensure EC2 instance is configured as expected.
-   ![ansible-post-roles-tasks](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-post-roles-tasks.png)
-   ![ansible-host-services](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-host-services.png)
-   ![ansible-ec2-jenkins](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-ec2-jenkins.png)
-   ![ansible-ec2-sonarqube](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-ec2-sonarqube.png)
-   
+   ![ansible-post-roles-tasks](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/ansible-post-roles-tasks.png)
+   ![ansible-host-services](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/ansible-host-services.png)
+   ![ansible-ec2-jenkins](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/ansible-ec2-jenkins.png)
+   ![ansible-ec2-sonarqube](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/ansible-ec2-sonarqube.png)
 
 ---
 
