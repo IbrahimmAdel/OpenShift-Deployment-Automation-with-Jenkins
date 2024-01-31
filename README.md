@@ -17,7 +17,7 @@
 5. [infra.sh](#infrash)
 6. [OpenShift Deployment](#openshift-deployment)
 7. [Jenkins Pipeline](#jenkins-pipeline)
-8. [Monitoring and Logging OpenShift Cluster](#monitoring-and-logging-openshift-cluster])
+8. [Monitoring and Logging OpenShift Cluster](#monitoring-and-logging-openshift-cluster)
 
 ---
 
@@ -40,14 +40,14 @@ Before you begin, ensure you have the following tools installed:
 ```bash
 ./gradlew test
 ```
-![unit-test-manual-run](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/unit-test-manual-run.png)
+![unit-test-manual-run](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/unit-test-manual-run.png)
 
 ##### Access Test Results:
 Navigate to the following path and open the index.html file:
 ```
 cd build/reports/tests/test/
 ```
-![unit-test-manual-index.html](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/unit-test-manual-index.html.png)
+![unit-test-manual-index.html](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/unit-test-manual-index.html.png)
 
 #### 2. Perform SonarQube Analysis
 
@@ -61,11 +61,11 @@ Ensure SonarQube project is configured with the necessary project key and login 
 -Dsonar.scm.provider= git 
 ```
 
-![sonarqube-run-test-locally](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/sonarqube-run-test-locally.png)
+![sonarqube-run-test-locally](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/sonarqube-run-test-locally.png)
 
 ##### View Results:
 Review the analysis on the SonarQube page
-![sonarqube-page-report-after-run-test-locally](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/sonarqube-page-report-after-run-test-locally.png)
+![sonarqube-page-report-after-run-test-locally](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/sonarqube-page-report-after-run-test-locally.png)
 
 
 #### 3. Build and Run Application
@@ -75,18 +75,18 @@ Review the analysis on the SonarQube page
 ```
 ./gradlew build --stacktrace
 ```
-![app-manual-build](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/app-manual-build.png)
+![app-manual-build](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/app-manual-build.png)
 
 
 ##### Run Application:
 ```
 java -jar demo.jar
 ```
-![app-manual-run](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/app-manual-run.png)
+![app-manual-run](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/app-manual-run.png)
 
 ##### Access Application Locally:
 Visit http://localhost:8081
-![app-run-open-locally](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/app-run-open-locally.png)
+![app-run-open-locally](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/app-run-open-locally.png)
 
 #### 4. Build Docker Image and Run Container
 
@@ -94,13 +94,13 @@ Visit http://localhost:8081
 ```
 docker build -t <image_name> .
 ```
-![docker-image-test](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/docker-image-test.png)
+![docker-image-test](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/docker-image-test.png)
 
 ###### Run Docker Continer
 ```
 docker run --name=<container_name> -d -p 8081:8081 <image_name>
 ```
-![docker-container-test](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/docker-container-test.png)
+![docker-container-test](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/docker-container-test.png)
 
 ---
 
@@ -110,48 +110,48 @@ docker run --name=<container_name> -d -p 8081:8081 <image_name>
 
 ### Overview
 
-1. **[main.tf]():**
+1. **[main.tf](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/main.tf):**
    - **Purpose:** Configure and define the cloud provider, Call terraform modules.
      
-2. **[variables.tf]():**
+2. **[variables.tf](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/variables.tf):**
    - **Purpose:** Set variables that need to be defined in terraform.tfvar file.
    
-3. **[terraform.tfvars]():**
+3. **[terraform.tfvars](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/terraform.tfvars):**
    - **Purpose:** Define values for the needed variables.
 
-4. **[Remote Backend]():**
+4. **[Remote Backend](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/remote_backend.tf):**
    - **Purpose:** Store Terraform state remotely using S3 and DynamoDB.
      
 ![aws-s3-remote-state](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-s3-remote-state.png)
 ![aws-dynamodc-lock](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-dynamodc-lock.png)
 
-5. **[VPC Module]():**
+5. **[VPC Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/vpc):**
    - **Purpose:** Provision a Virtual Private Cloud (VPC) with internet gateway for public access.
    - **Files:** `vpc/main.tf`, `vpc/variables.tf`, `vpc/outputs.tf`
      
 ![aws-vpc](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-vpc.png)
 ![aws-internet-gateway](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-internet-gateway.png)
 
-6. **[Subnet Module]():**
+6. **[Subnet Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/subnet):**
    - **Purpose:** Define public subnet, route table.
    - **Files:** `subnet/main.tf`, `subnet/variables.tf`, `subnet/outputs.tf`
      
 ![aws-subnet](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-subnet.png)
 ![aws-route-table](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-route-table.png)
 
-7. **[EC2 Module]():**
+7. **[EC2 Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/ec2):**
    - **Purpose:** Create an EC2 instance with necessary security group.
    - **Files:** `ec2/main.tf`, `ec2/variables.tf`, `ec2/outputs.tf`
      
-![](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-ec2-instance.png)
-![](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-ec2-key-pair.png)
+![aws-ec2-instance](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-ec2-instance.png)
+![aws-ec2-key-pair](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-ec2-key-pair.png)
 
-8. **[CloudWatch Module]():**
+8. **[CloudWatch Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/cloudwatch):**
    - **Purpose:** Set up CloudWatch resources for monitoring and SNS resources for sending mails for alarems.
    - **Files:** `cloudwatch/main.tf`, `cloudwatch/variables.tf`, `cloudwatch/outputs.tf`
      
-![aws-cloudwatch](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-cloudwatch.png)
-![aws-sns-gmail](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-sns-gmail.jpeg)
+![aws-cloudwatch](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-cloudwatch.png)
+![aws-sns-gmail](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-sns-gmail.jpeg)
 
 ### Usage
 
@@ -197,34 +197,34 @@ terraform destroy
 
 ### Roles Structure and Details
 
-[Prerequisite Role]()
+[Prerequisite Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/prerequisite)
    - **Purpose:** Install required packages on the EC2 instance.
 
-[Postgres Role]()
+[Postgres Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/postgres)
    - **Purpose:** Install and configure Postgres for SonarQube.
 
-[SonarQube Role]()
+[SonarQube Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/SonarQube)
    - **Purpose:** Install and configure SonarQube on the EC2 instance.
    - **Resourses:** https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/
 
-[Git Role]()
+[Git Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/Git)
    - **Purpose:** Install Git on the EC2 instance.
 
-[Jenkins Role]()
+[Jenkins Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/Jenkins)
    - **Purpose:** Install Jenkins on the EC2 instance, Configure the initial password and admin username and password for login, Install necessary plugins on jenkins.
-   - Note: you need to configure jenkins admin credentials in vars.yml file. 
+   - Note: you need to configure jenkins admin credentials in [vars.yml](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Ansible/roles/Jenkins/vars/main.yaml) file. 
 
-[Docker Role]()
+[Docker Role](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Ansible/roles/Docker)
    - **Purpose:** Install and configure Docker on the EC2 instance, Configure jenkins user to run docker commands.
 
 ### Usage
-1. Update 'ansible_host, 'ansible_ssh_private_key_file' in **inventory.ini**.
-2. Update 'Jenkins admin credentials' in **ansible/roles/jenkins/vars/main.yml**.
-3. Run the Ansible playbook:
+1. Update 'ansible_host & 'ansible_ssh_private_key_file' in **[inventory.ini](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Ansible/inventory.ini)**.
+2. Update 'Jenkins admin credentials' in **[ansible/roles/jenkins/vars/main.yml](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Ansible/roles/Jenkins/vars/main.yaml)**.
+3. Run Ansible playbook
     ```bash
     ansible-playbook -i inventory.ini playbook.yml
     ```
-4. Ensure the EC2 instance is configured as expected.
+4. Ensure EC2 instance is configured as expected.
    ![ansible-post-roles-tasks](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-post-roles-tasks.png)
    ![ansible-host-services](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-host-services.png)
    ![ansible-ec2-jenkins](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/ansible-ec2-jenkins.png)
@@ -239,7 +239,7 @@ terraform destroy
 
 ## Usage
 
-### 1. Update terraform and ansible directories path 
+### 1. Update terraform and ansible directories paths
 ```
 vim infra.sh
 ```
@@ -247,7 +247,7 @@ and update
    - terraform_dir="./Terraform"
    - ansible_dir="./Ansible"
 
-### 2. Make the script executable
+### 2. Make script executable
 
 ```
 chmod +x infra.sh
@@ -267,23 +267,23 @@ chmod +x infra.sh
 
 ### OpenShift Manifests
 
-1. **[Deployment]():**
+1. **[Deployment](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/OpenShift/deployment.yaml):**
    - **Purpose:** Define the deployment configuration for Java web-app.
    - **File:** `openshift/deployment.yml`
 
-2. **[Service]():**
+2. **[Service](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/OpenShift/service.yaml):**
    - **Purpose:** Expose the application within the OpenShift cluster.
    - **File:** `openshift/service.yml`
 
-3. **[Network Policy]():**
+3. **[Network Policy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/OpenShift/networkpolicy.yaml):**
    - **Purpose:** Define network policies for secure communication.
    - **File:** `openshift/networkpolicy.yml`
 
-4. **[Route]():**
+4. **[Route](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/OpenShift/route.yaml):**
    - **Purpose:** Expose the application externally.
    - **File:** `openshift/route.yml`
 
-5. **[Persistent Volume Claim (PVC)]():**
+5. **[Persistent Volume Claim (PVC)](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/OpenShift/pvc.yaml):**
    - **Purpose:** Manage persistent storage for the application.
    - **File:** `openshift/pvc.yml`
 
@@ -312,15 +312,15 @@ cd OpenShift
 ### 1. Jenkins Shared Library
    **Purpose:** GitHub Repo files contain reusable functions for Jenkins pipeline.
 
-- **[checkoutRepo.groovy]():** Ckeck GitHub source coude.
+- **[checkoutRepo.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/checkoutRepo.groovy):** Ckeck GitHub source coude.
 
-- **[runUnitTests.groovy]():** run unit test command.
+- **[runUnitTests.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/runUnitTests.groovy):** run unit test command.
 
-- **[runSonarQubeAnalysis.groovy]():** run sonarqube command , Function argument: SonarQube server name, SonarQube authentication token credentials ID, SonarQube project key, SonarQube host server.
+- **[runSonarQubeAnalysis.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/runSonarQubeAnalysis.groovy):** run sonarqube command , Function argument: SonarQube server name, SonarQube authentication token credentials ID, SonarQube project key, SonarQube host server.
 
-- **[buildandPushDockerImage.groovy]():** Build docker image and push it to DockerHub, Function argument: DockerHub credentials ID, Image name.
+- **[buildandPushDockerImage.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/buildandPushDockerImage.groovy):** Build docker image and push it to DockerHub, Function argument: DockerHub credentials ID, Image name.
 
-- **[deployOnOpenShift.groovy]():** login to OpenShift cluster and deploy files, Function argument: Image name, Deployment file name, OpenShift credentials ID, OpenShift server URL, OpenShif project.
+- **[deployOnOpenShift.groovy](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkins%20Shared%20Library/deployOnOpenShift.groovy):** login to OpenShift cluster and deploy files, Function argument: Image name, Deployment file name, OpenShift credentials ID, OpenShift server URL, OpenShif project.
   
 
 ### 2. OpenShift Service Account
@@ -344,18 +344,18 @@ oc create clusterrolebinding <rolebinding_name> --clusterrole=edit --serviceacco
 oc get secrets -n <project_name> -o jsonpath='{.items[?(@.metadata.annotations.kubernetes\.io/service-account\.name=="<serviceaccount_name>")].data.token}' | base64 -d  //get token
 ```
 
-![jenkins-openshit-service-account](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/jenkins-openshit-service-account.png)
+![jenkins-openshit-service-account](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-openshit-service-account.png)
 
 
 ### 3. SonarQube Project
 
 #### Objective:
-Create a SonarQube project and configure code from GitHub, Add the Info of the GitHub App.
+Create a SonarQube project.
 
 #### Steps:
 1. Log in to SonarQube.
 2. Navigate to Project.
-3. Configure new project.
+3. Configure new project manually.
 
 
 ### 4. SonarQube Token:
@@ -368,7 +368,7 @@ Generate a secure user token for SonarQube to be used by Jenkins during the exec
 2. Navigate to Administration, Choose security, Then Users, Lastly Tokens.
 3. Generate a new token with the necessary permissions for code analysis.
 
-![jenkins-sonarqube-token](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/jenkins-sonarqube-token.png)
+![jenkins-sonarqube-token](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-sonarqube-token.png)
 
 ## Usage
 
@@ -379,14 +379,14 @@ Configure Jenkins credentials for various services:
 
 - GitHub
 - DockerHub
-- OpenShift Token
+- OpenShift Token, Can be Kubeconfig file or service account token
 - SonarQube Token
 
 #### Steps:
 1. In Jenkins, navigate to Manage Jenkins, then Manage Credentials.
 2. Add credentials for each service with the corresponding authentication details.
 
-![jenkins-credentials](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/jenkins-credentials.png)
+![jenkins-credentials](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-credentials.png)
 
 ### 2. Make Shared Library Available Globally
 
@@ -411,7 +411,7 @@ Configure SonarQube settings from the "Manage Jenkins" section in Jenkins to int
 2. Scroll down to the SonarQube Servers section.
 3. Add a new SonarQube server with the server URL and the previously generated SonarQube token.
 
-![jenkins_add_sonarqube_plugin](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/jenkins_add_sonarqube_plugin.png)
+![jenkins_add_sonarqube_plugin](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-sonarqube-plugin-configuration.png)
 
 ### 4. Open Jenkins and Create a New Pipeline Job
 
@@ -424,7 +424,7 @@ Set up a new pipeline job in Jenkins to orchestrate the deployment and testing p
 3. Configure the pipeline settings, including the pipeline script from your repository.
 
 
-### 5. Update Variables in [Jenkinsfile]()
+### 5. Update Variables in [Jenkinsfile](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Jenkinsfile)
 
 #### Objective:
 Customize the Jenkinsfile by updating variables to match the specifics of your project and environment.
@@ -432,15 +432,12 @@ Customize the Jenkinsfile by updating variables to match the specifics of your p
 #### Steps:
 1. Open Jenkinsfile in your repository.
 2. Update these variables:
-   - **sonarqubeServerName:** from Sonarqube server in manage jenkins system.    			
-   - **sonarqubeHostServer:** server that runs sonarqube.
-   - **sonarqubeCredentialsID:** SonarQube token credentials ID.
-   - **sonarqubeProjectKey:** SonarQube project key.
    - **dockerHubCredentialsID:** DockerHub credentials ID.
-   - **imageName:** GitHub_repo/image_name.
-   - **openshiftCredentialsID:** OpenShift service account token credentials ID.
-   - **openshiftServerURL:** can get it by run 'oc cluster-info'.
-   - **openshifProject:** OpenShift project name to deploy in it.
+   - **imageName:** DockerHub repo/image name.
+   - **openshiftCredentialsID:** service account token credentials ID or KubeConfig credentials ID.
+   - **openshiftClusterURL:** OpenShift Cluser URL.
+   - **openshifProject:** OpenShift project name.
+	    
 
 ### 6. Configure the Pipeline with the [Jenkinsfile]() in Your Repository
 
@@ -457,6 +454,10 @@ Initiate the execution of the pipeline to perform the defined stages, including 
 
 #### Steps:
 1. Manually trigger the pipeline in Jenkins or set up automatic triggers based on events in your version control system.
+
+![jenkins-pipeline-final-run](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-pipeline-final-run.png)
+![dockerhub-image](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/Dockerhub-image-pushed.png)
+![openshft-final-apply](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/Jenkins-final-deploy-openshift.png)
 
 ---
 
@@ -492,7 +493,7 @@ helm test logging-operator --namespace ot-operators
 ```
 oc get pods -n ot-operators -l name=logging-operator
 ```
-![Logging_operator]()
+![Logging_operator](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/Logging_operator.png)
 
 
 ## Elasticsearch Setup
@@ -531,10 +532,11 @@ oc get elasticsearch -n ot-operators
 ```
 
 ## Resources
-	### - https://ot-logging-operator.netlify.app/
-	### - https://ot-logging-operator.netlify.app/docs/getting-started/installation/
-	### - https://ot-logging-operator.netlify.app/docs/getting-started/elasticsearch-setup/
-	### - https://ot-logging-operator.netlify.app/docs/configuration/elasticsearch-config/
+ - https://ot-logging-operator.netlify.app/
+ - https://ot-logging-operator.netlify.app/docs/getting-started/installation/
+ - https://ot-logging-operator.netlify.app/docs/getting-started/elasticsearch-setup/
+ - https://ot-logging-operator.netlify.app/docs/configuration/elasticsearch-config/
+
 ---
 
 ## By following these detailed steps, you will establish a comprehensive CI/CD pipeline integrating Jenkins, SonarQube, Docker, and OpenShift.
