@@ -1,7 +1,7 @@
 #!/bin/bash
 # Provision Terraform infrastructure and configure EC2 instance with Ansible
 
-# Set the paths to Terraform and Ansible directories
+# Set path to Terraform and Ansible directories
 terraform_dir="./Terraform"
 ansible_dir="./Ansible"
 
@@ -14,7 +14,7 @@ run_terraform() {
     echo "Terraform execution completed."
 }
 
-# Function to get the public IP of the EC2 instance
+# Function to get public IP of EC2 instance
 get_ip() {
     echo "Getting EC2 public IP..."
     ec2_public_ip=$(terraform output ec2_public_ip)
@@ -22,7 +22,7 @@ get_ip() {
     cd ..
 }
 
-# Function to update the Ansible inventory file with the new public IP
+# Function to update Ansible inventory file with new public IP
 update_inventory() {
     cd "$ansible_dir" 
     echo "Updating Ansible inventory file..."
