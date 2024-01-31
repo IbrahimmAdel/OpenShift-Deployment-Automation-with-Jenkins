@@ -110,34 +110,34 @@ docker run --name=<container_name> -d -p 8081:8081 <image_name>
 
 ### Overview
 
-1. **[main.tf](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/main.tf):**
+1. **[main.tf](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/main.tf)**
    - **Purpose:** Configure and define the cloud provider, Call terraform modules.
      
-2. **[variables.tf](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/variables.tf):**
+2. **[variables.tf](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/variables.tf)**
    - **Purpose:** Set variables that need to be defined in terraform.tfvar file.
    
-3. **[terraform.tfvars](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/terraform.tfvars):**
+3. **[terraform.tfvars](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/terraform.tfvars)**
    - **Purpose:** Define values for the needed variables.
 
-4. **[Remote Backend](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/remote_backend.tf):**
+4. **[Remote Backend](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Terraform/remote_backend.tf)**
    - **Purpose:** Store Terraform state remotely using S3 and DynamoDB.
      
-![aws-s3-remote-state](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-s3-remote-state.png)
-![aws-dynamodc-lock](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-dynamodc-lock.png)
+![aws-s3-remote-state](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-s3-remote-state.png)
+![aws-dynamodc-lock](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-dynamodc-lock.png)
 
 5. **[VPC Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/vpc):**
    - **Purpose:** Provision a Virtual Private Cloud (VPC) with internet gateway for public access.
    - **Files:** `vpc/main.tf`, `vpc/variables.tf`, `vpc/outputs.tf`
      
-![aws-vpc](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-vpc.png)
-![aws-internet-gateway](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-internet-gateway.png)
+![aws-vpc](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-vpc.png)
+![aws-internet-gateway](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-internet-gateway.png)
 
 6. **[Subnet Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/subnet):**
    - **Purpose:** Define public subnet, route table.
    - **Files:** `subnet/main.tf`, `subnet/variables.tf`, `subnet/outputs.tf`
      
-![aws-subnet](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-subnet.png)
-![aws-route-table](https://github.com/IbrahimmAdel/project/blob/master/Screenshots/aws-route-table.png)
+![aws-subnet](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-subnet.png)
+![aws-route-table](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/aws-route-table.png)
 
 7. **[EC2 Module](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/tree/master/Terraform/ec2):**
    - **Purpose:** Create an EC2 instance with necessary security group.
