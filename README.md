@@ -311,7 +311,7 @@ cd OpenShift
 
 ## Jenkins Pipeline
 
-> This document provides an overview of the Ansible playbook for installing and configuring Jenkins on an EC2 instance, along with additional roles for SonarQube, PostgreSQL, and Docker.
+> This documentation provides detailed steps to set up and configure Jenkins for orchestrating an OpenShift deployment automation pipeline using jenkins shared library. The setup includes configuring Jenkins credentials, making the Shared Library available globally, managing SonarQube integration, and creating a new pipeline job.
 
 ## Prerequisite
 
