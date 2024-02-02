@@ -239,7 +239,7 @@ jenkins_email: ''
 
 ---
 
-## [infra.sh]()
+## [infra.sh](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/infra.sh)
 
 > This Bash script is designed to streamline the setup of the project's infrastructure. It accomplishes this by executing 'Terraform' commands, updating the 'ansible_host' in the inventory.ini file with EC2 puplic IP, and finally running the Ansible playbook on the EC2 instance.
 
