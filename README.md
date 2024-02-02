@@ -347,7 +347,7 @@ oc create clusterrolebinding <rolebinding_name> --clusterrole=edit --serviceacco
 
 3. Capture the token associated with the service account for authentication in Jenkins.
 ```
-oc get secrets -n <project_name> -o jsonpath='{.items[?(@.metadata.annotations.kubernetes\.io/service-account\.name=="<serviceaccount_name>")].data.token}' | base64 -d  //get token
+oc get secrets -n <project_name> -o jsonpath='{.items[?(@.metadata.annotations.kubernetes\.io/service-account\.name=="<serviceaccount_name>")].data.token}' | base64 -d
 ```
 
 ![jenkins-openshit-service-account](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-openshit-service-account.png)
