@@ -2,7 +2,7 @@
 
 > Comprehensive documentation for deploying a Java web app on OpenShift using Terraform, Ansible, Jenkins, and more.
 
-# Project Structure
+## Project Structure
 
 ![project](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/project.png)
 
