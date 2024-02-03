@@ -299,12 +299,12 @@ chmod +x infra.sh
  ```bash
 cd OpenShift
  ```
-2. Apply OpenShift deployment configurations:
+2. Apply OpenShift deployment configurations
 
  ```bash
  oc apply -f .
  ```
-3. Verify the deployment status.
+3. Verify the deployment status
    ![Final-Deployment](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/Jenkins-final-deploy-openshift.png)
 
 ---
@@ -414,7 +414,7 @@ Push the shared library file to a separate GitHub repository and configure it to
 
 ![jenkins-sharedLibrary-available](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/jenkins-sharedLibrary-available.png)
 
-### 3. Manage SonarQube from Manage Jenkins
+### 3. Manage SonarQube plugin
 
 #### Objective:
 Configure SonarQube settings from the "Manage Jenkins" section in Jenkins to integrate it seamlessly into the CI/CD pipeline.
