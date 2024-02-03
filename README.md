@@ -4,7 +4,7 @@
 
 ## Project Structure
 
-![project](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/Project.png)
+![project](https://github.com/IbrahimmAdel/OpenShift-Deployment-Automation-with-Jenkins/blob/master/Screenshots/diagram.png)
 
 ## Overview
 
